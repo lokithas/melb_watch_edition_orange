@@ -44,6 +44,10 @@ var App = {
       App.router.currentView.trigger('face');
     });
 
+    $('#navigation-button-middle').on('click',function(){
+      App.router.currentView.trigger('face');
+    });
+
     clock.start();
 
     if(Backbone.history && !Backbone.History.started) {
