@@ -56,6 +56,11 @@ describe('The Home Page', function() {
       expect(homePage.render()).toEqual(homePage);
     });
 
+    it('should show the sign up button', function() {
+      homePage.render();
+      expect(homePage.$el).toContainText('Sign up!');
+    });
+
   });
 
 });
