@@ -11,7 +11,8 @@ var homeScreen = PageView.extend({
   buttonEvents: {
     right: 'goToContacts',
     top: 'scrollUp',
-    bottom: 'scrollDown'
+    bottom: 'scrollDown',
+    left: 'register'
   },
 
   goToContacts: function() {
@@ -29,6 +30,10 @@ var homeScreen = PageView.extend({
   render: function() {
     this.$el.html(this.template());
     return this;
+  },
+
+  register: function() {
+    global.App.navigate('register');
   }
 
 });
