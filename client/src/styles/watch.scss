@@ -28,14 +28,15 @@
 }
 
 #notification_popup {
-  background-color: black;
+  background-color: #B22222;
   color: white;
   position: absolute;
+  border-radius: 10px;
   height: 160px;
   width: 160px;
   margin-top: -260px;
   margin-left: 40px;
-  opacity: 0.9;
+  opacity: 0.95;
   z-index: 100;
   padding: 20px;
 }
@@ -51,6 +52,16 @@
 #navigation-button-left {
   float:left;
 }
+
+#navigation-button-middle {
+  background-color: #BB4444;
+  height:50px;
+  line-height:50px;
+  color:white;
+  text-align:center;
+  font-size:32px;  
+}
+
 .power:nth-child(1){
   position:absolute;
   right:-0.4em;
