@@ -38,11 +38,13 @@
   margin-left: 40px;
   opacity: 0.95;
   z-index: 100;
-  padding: 20px;
+  padding: 32px;
 }
 
 #notification_message_display {
   height: 70%;
+  word-break: break-all;
+  overflow: scroll;
 }
 
 #navigation-button-right {
