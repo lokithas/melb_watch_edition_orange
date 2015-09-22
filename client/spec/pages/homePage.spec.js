@@ -25,6 +25,15 @@ describe('The Home Page', function() {
       });
     });
 
+    describe('left', function() {
+      it('should take the user to the register page', function() {
+        spyOn(global.App, 'navigate');
+        homePage.setButtonEvents();
+        homePage.trigger('left');
+        expect(global.App.navigate).toHaveBeenCalledWith('register');
+      });
+    });
+
     describe('top', function() {
       it('should scroll the watch face up', function() {
         spyOn(homePage, 'scrollUp');
@@ -55,12 +64,6 @@ describe('The Home Page', function() {
     it('returns the view object', function() {
       expect(homePage.render()).toEqual(homePage);
     });
-
-    it('should show the sign up button', function() {
-      homePage.render();
-      expect(homePage.$el).toContainText('Sign up!');
-    });
-
   });
 
 });
