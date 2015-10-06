@@ -39,4 +39,18 @@ describe('The register Page', function() {
       expect(registerPage.render()).toEqual(registerPage);
     });
   });
+
+
+  describe('register data', function() {
+
+    it('should have a register collection', function() {
+      expect(registerPage.registersCollection).toBeDefined();
+    });
+
+    describe('loading data', function() {
+      it('should load the data from ...');
+    });
+
+  });
+
 });
