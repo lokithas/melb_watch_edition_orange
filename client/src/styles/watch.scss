@@ -32,38 +32,20 @@
   color: white;
   position: absolute;
   border-radius: 10px;
-  height: 160px;
-  width: 160px;
+  height: 170px;
+  width: 170px;
   margin-top: -260px;
   margin-left: 40px;
   opacity: 0.95;
   z-index: 100;
-  padding: 32px;
+  padding: 20px;
 }
 
 #notification_message_display {
-  height: 70%;
+  height: 100%;
   word-break: break-all;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-#navigation-button-right {
-  float:right;
-}
-
-#navigation-button-left {
-  float:left;
-}
-
-#navigation-button-middle {
-  background-color: #BB4444;
-  border-radius: 5px;
-  height:50px;
-  line-height:50px;
-  color:white;
-  text-align:center;
-  font-size:32px;  
 }
 
 .power:nth-child(1){

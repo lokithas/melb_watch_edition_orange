@@ -29,6 +29,21 @@ var notificationsConfig = [
       navigateToContacts: function() {
         global.App.navigate('contacts');
       }
+    },
+    {
+      name: 'Send an alert message',
+      defaultMessage: 'ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ALERT ALERT ALERT, ',
+      buttonEvents: {
+        top: 'scrollNotificationUp',
+        bottom: 'scrollNotificationDown'
+      },
+      scrollNotificationDown: function() {
+        $('#notification_message_display').animate({scrollTop: '+=70px'});
+      },
+
+      scrollNotificationUp: function() {
+        $('#notification_message_display').animate({scrollTop: '-=70px'});
+      }
     }
 ];
 

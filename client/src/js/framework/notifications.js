@@ -83,8 +83,9 @@ var NotificationsPanel = Backbone.View.extend({
       var configuredButtonEvent = selectedNotificationType.buttonEvents[buttonId];
       currentView.listenTo(currentView, buttonId, selectedNotificationType[configuredButtonEvent]);
     }
-
-    currentView.listenTo(currentView, buttonId, _.bind(this.cancelNotification, this));
+    else {
+      currentView.listenTo(currentView, buttonId, _.bind(this.cancelNotification, this));
+    }
   },
 
   cancelNotification: function() {
