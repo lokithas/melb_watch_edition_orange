@@ -14,6 +14,18 @@ describe('The register Page', function() {
     registerPage = new RegisterPage();
   });
 
+  /*describe('register data', function() {
+
+    it('should have a register collection', function() {
+      expect(registerPage.registersCollection).toBeDefined();
+    });
+
+    describe('loading data', function() {
+      it('should load the data from ...');
+    });
+
+  });*/
+
   describe('button events', function() {
 
     beforeEach(function() {
@@ -38,19 +50,6 @@ describe('The register Page', function() {
     it('returns the view object', function() {
       expect(registerPage.render()).toEqual(registerPage);
     });
-  });
-
-
-  describe('register data', function() {
-
-    it('should have a register collection', function() {
-      expect(registerPage.registersCollection).toBeDefined();
-    });
-
-    describe('loading data', function() {
-      it('should load the data from ...');
-    });
-
   });
 
 });

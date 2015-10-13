@@ -17,16 +17,16 @@ var registerPage = PageView.extend({
     left: 'goToHomePage'
   },
 
-  initialize: function(){
-    var self =this;
+  initialize: function() {
+    var self = this;
 
     this.registersColleciton = new RegistersCollection();
-    this.listenTo(this.registersColleciton,'change',this.rendor);
+    this.listenTo(this.registersColleciton, 'change', this.rendor);
 
     self.seedRegisters();
   },
 
-  seedRegisters: function(){
+  seedRegisters: function() {
     this.registersColleciton.push([
       {location: 'Altona'},
       {location:'Altona'},
@@ -134,19 +134,19 @@ var registerPage = PageView.extend({
   render: function() {
 
     this.$el.html(this.template());
-    
+
     var registerHTML = document.createDocumentFragment();
 
-    this.registersColleciton.each(function(register) {
-      $(registerHTML).append(this.createRegisterHTML(register));
-    },this);
+    this.registersColleciton.each(function(indx, register) {
+      $(registerHTML).append(this.createRegisterHTML(indx, register));
+    }, this);
 
     this.$el.append(registerHTML);
 
     return this;
   },
 
-  createRegisterHTML: function(register){
+  createRegisterHTML: function(indx, register) {
     var view = new RegisterView({
       model: register
     });
