@@ -24,8 +24,10 @@ var ContactsView = PageView.extend({
 
     this.contactsCollection = new ContactsCollection();
     this.listenTo(this.contactsCollection, 'change', this.render);
-
-    self.seedContacts();
+    
+    $("#contact-0").hide();
+    
+    //self.seedContacts();
   },
 
   // TODO use jquery to load a JSON file async test?
@@ -52,15 +54,13 @@ var ContactsView = PageView.extend({
     var contactsHTML = document.createDocumentFragment();
 
     this.contactsCollection.each(function(contact, index) {
-      contact.index = ""+index;
-       console.log($(contact));
+      contact.attributes.index = index;
+      console.log(index);
       $(contactsHTML).append(this.createContactHTML(contact));
     }, this);
 
     this.$el.append(contactsHTML);
-
-   
-
+    
     return this;
   },
 

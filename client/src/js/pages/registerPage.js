@@ -23,12 +23,11 @@ var registerPage = PageView.extend({
     this.registersColleciton = new RegistersCollection();
     this.listenTo(this.registersColleciton, 'change', this.rendor);
 
-    self.seedRegisters();
+    //self.seedRegisters();
   },
 
   seedRegisters: function() {
     this.registersColleciton.push([
-      {location: 'Altona'},
       {location:'Altona'},
       {location:'Bass'},
       {location:'Bayswater'},
