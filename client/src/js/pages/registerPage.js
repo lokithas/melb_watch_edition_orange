@@ -137,8 +137,8 @@ var registerPage = PageView.extend({
 
     var registerHTML = document.createDocumentFragment();
 
-    this.registersColleciton.each(function(indx, register) {
-      $(registerHTML).append(this.createRegisterHTML(indx, register));
+    this.registersColleciton.each(function(register) {
+      $(registerHTML).append(this.createRegisterHTML(register));
     }, this);
 
     this.$el.append(registerHTML);
@@ -146,7 +146,7 @@ var registerPage = PageView.extend({
     return this;
   },
 
-  createRegisterHTML: function(indx, register) {
+  createRegisterHTML: function(register) {
     var view = new RegisterView({
       model: register
     });
