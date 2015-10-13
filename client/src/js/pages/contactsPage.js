@@ -14,7 +14,9 @@ var ContactsView = PageView.extend({
   buttonEvents: {
     right: 'goToHomePage',
     face: 'screenClickExample',
-    left: 'back'
+    left: 'back',
+    top: 'scrollUp',
+    bottom: 'scrollDown'
   },
 
   initialize: function() {
@@ -49,21 +51,33 @@ var ContactsView = PageView.extend({
 
     var contactsHTML = document.createDocumentFragment();
 
-    this.contactsCollection.each(function(contact) {
+    this.contactsCollection.each(function(contact, index) {
+      contact.index = ""+index;
+       console.log($(contact));
       $(contactsHTML).append(this.createContactHTML(contact));
     }, this);
 
     this.$el.append(contactsHTML);
 
+   
+
     return this;
   },
 
   createContactHTML: function(contact) {
-      var view = new ContactView({
-        model: contact
-      });
-      return view.render().el;
-    }
+    var view = new ContactView({
+      model: contact
+    });
+    return view.render().el;
+  },
+
+  scrollUp: function() {
+    $('#watch-face').animate({scrollTop: '-=70px'});
+  },
+
+  scrollDown: function() {
+    $('#watch-face').animate({scrollTop: '+=70px'});
+  }
 
 }
 );
