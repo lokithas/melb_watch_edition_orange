@@ -14,7 +14,9 @@ var ContactsView = PageView.extend({
   buttonEvents: {
     right: 'goToHomePage',
     face: 'screenClickExample',
-    left: 'back'
+    left: 'back',
+    top: 'scrollUp',
+    bottom: 'scrollDown'
   },
 
   initialize: function() {
@@ -22,6 +24,8 @@ var ContactsView = PageView.extend({
 
     this.contactsCollection = new ContactsCollection();
     this.listenTo(this.contactsCollection, 'change', this.render);
+
+    this.selectedIndex = 0;
 
     self.seedContacts();
   },
@@ -49,9 +53,14 @@ var ContactsView = PageView.extend({
 
     var contactsHTML = document.createDocumentFragment();
 
-    this.contactsCollection.each(function(contact) {
+    this.contactsCollection.each(function(contact, index) {
+
+      contact.attributes.index = index;
       $(contactsHTML).append(this.createContactHTML(contact));
     }, this);
+
+    //$(contactsHTML.firstElementChild.firstElementChild).css('background-color', 'green');
+    //$('#contact-'+this.selectedIndex).css('background-color', 'green');
 
     this.$el.append(contactsHTML);
 
@@ -63,7 +72,22 @@ var ContactsView = PageView.extend({
         model: contact
       });
       return view.render().el;
-    }
+    },
+
+
+    scrollUp: function() {
+    $('#watch-face').animate({scrollTop: '-=30px'});
+    $('#contact-'+this.selectedIndex).css('background-color', '');
+    this.selectedIndex = this.selectedIndex - 1;
+    $('#contact-'+this.selectedIndex).css('background-color', 'green');
+  },
+
+  scrollDown: function() {
+    $('#watch-face').animate({scrollTop: '+=30px'});
+    $('#contact-'+this.selectedIndex).css('background-color', '');
+    this.selectedIndex = this.selectedIndex + 1;
+    $('#contact-'+this.selectedIndex).css('background-color', 'green');
+  }
 
 }
 );
