@@ -21,6 +21,8 @@ var registerPage = PageView.extend({
   initialize: function() {
     var self = this;
 
+    this.selectedIndex = 0;
+
     this.registersColleciton = new RegistersCollection();
     this.listenTo(this.registersColleciton, 'change', this.rendor);
 
@@ -29,7 +31,7 @@ var registerPage = PageView.extend({
 
   seedRegisters: function() {
     this.registersColleciton.push([
-      {location: 'Altona', selected:false},
+      {location:'Altona', selected:false},
       {location:'Bass', selected:false},
       {location:'Bayswater', selected:false},
       {location:'Bellarine', selected:false},
@@ -124,21 +126,27 @@ var registerPage = PageView.extend({
   },
 
   scrollUp: function() {
-    $('#watch-face').animate({scrollTop: '-=70px'});
+    $('#watch-face').animate({scrollTop: '-=18px'});
+    $('#register-'+this.selectedIndex).css('background-color', '');
+     this.selectedIndex = this.selectedIndex - 1;
+     $('#register-'+this.selectedIndex).css('background-color', 'grey');
   },
 
   scrollDown: function() {
-    $('#watch-face').animate({scrollTop: '+=70px'});
+    $('#watch-face').animate({scrollTop: '+=18px'});
+    $('#register-'+this.selectedIndex).css('background-color', '');
+      this.selectedIndex = this.selectedIndex + 1;
+    $('#register-'+this.selectedIndex).css('background-color', 'grey');
   },
 
   toggleSelect: function() {
-    if (this.registersColleciton[15].selected === false)
-    {
-      this.registersColleciton[15].selected = true;
-    }
-    else {
-      this.registersColleciton[15].selected = false;
-    }
+ $('#register-'+this.selectedIndex).css('color', '#f17b00');
+     var idEmergencyRegister = $('#register-'+this.selectedIndex).children()[0].id;
+     console.log("ID: " + idEmergencyRegister);
+     console.log(this.registersColleciton.get(idEmergencyRegister));
+   
+      var emergencyRegister = this.registerCollection.get(idEmergencyRegister);
+      emergencyRegister.set({isEmergencyRegister : true});
   },
 
   render: function() {
@@ -147,7 +155,9 @@ var registerPage = PageView.extend({
 
     var registerHTML = document.createDocumentFragment();
 
-    this.registersColleciton.each(function(register) {
+    this.registersColleciton.each(function(register, index) {
+      register.attributes.index = index;
+
       $(registerHTML).append(this.createRegisterHTML(register));
     }, this);
 

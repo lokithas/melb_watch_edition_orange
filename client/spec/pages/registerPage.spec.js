@@ -42,11 +42,6 @@ describe('The register Page', function() {
   });
 
   describe('rendering', function() {
-    it('should produce the correct HTML', function() {
-      registerPage.render();
-      expect(registerPage.$el).toContainHtml('<p>You made it :)</p>');
-    });
-
     it('returns the view object', function() {
       expect(registerPage.render()).toEqual(registerPage);
     });

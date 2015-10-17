@@ -71,18 +71,18 @@ var ContactsView = PageView.extend({
     $('#watch-face').animate({scrollTop: '-=36px'});
     $('#contact-'+this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex - 1;
-    $('#contact-'+this.selectedIndex).css('background-color', 'green');
+    $('#contact-'+this.selectedIndex).css('background-color', 'grey');
   },
 
   scrollDown: function() {
     $('#watch-face').animate({scrollTop: '+=36px'});
     $('#contact-'+this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex + 1;
-    $('#contact-'+this.selectedIndex).css('background-color', 'green');
+    $('#contact-'+this.selectedIndex).css('background-color', 'grey');
   },
 
   selectContact: function() {
-    $('#contact-'+this.selectedIndex).css('color', 'red');
+    $('#contact-'+this.selectedIndex).css('color', '#f17b00');
     var idEmergencyContact = $('#contact-'+this.selectedIndex).children()[0].id;
     var emergencyContact = this.contactsCollection.get(idEmergencyContact);
     emergencyContact.set({isEmergencyContact : true});
