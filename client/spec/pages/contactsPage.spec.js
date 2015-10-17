@@ -33,7 +33,7 @@ describe('The Contacts Page', function() {
     });
 
     describe('right', function() {
-      it('should take the user to the home page', function() {
+      xit('should select a user', function() {
         spyOn(global.App, 'navigate');
         contactsPage.trigger('right');
         expect(global.App.navigate).toHaveBeenCalledWith('');
