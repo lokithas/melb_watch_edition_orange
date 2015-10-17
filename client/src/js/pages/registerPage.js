@@ -136,7 +136,7 @@ var registerPage = PageView.extend({
     {
       this.registersColleciton[15].selected = true;
     }
-    else{
+    else {
       this.registersColleciton[15].selected = false;
     }
   },

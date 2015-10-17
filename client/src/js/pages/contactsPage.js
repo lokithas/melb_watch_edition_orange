@@ -70,28 +70,27 @@ var ContactsView = PageView.extend({
       return view.render().el;
     },
 
-    scrollUp: function() {
+  scrollUp: function() {
     $('#watch-face').animate({scrollTop: '-=36px'});
-    $('#contact-'+this.selectedIndex).css('background-color', '');
+    $('#contact-' + this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex - 1;
-    $('#contact-'+this.selectedIndex).css('background-color', 'green');
+    $('#contact-' + this.selectedIndex).css('background-color', 'green');
   },
 
   scrollDown: function() {
     $('#watch-face').animate({scrollTop: '+=36px'});
-    $('#contact-'+this.selectedIndex).css('background-color', '');
+    $('#contact-' + this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex + 1;
-    $('#contact-'+this.selectedIndex).css('background-color', 'green');
+    $('#contact-' + this.selectedIndex).css('background-color', 'green');
   },
 
   selectContact: function() {
-    $('#contact-'+this.selectedIndex).css('background-color', 'green');
-    $('#contact-'+this.selectedIndex).css('background-color', 'grey');
-    var idEmergencyContact = $('#contact-'+this.selectedIndex).children()[0].id;
-    console.log("ID: " + idEmergencyContact);
+    $('#contact-' + this.selectedIndex).css('color', 'red');
+    var idEmergencyContact = $('#contact-' + this.selectedIndex).children()[0].id;
+    console.log('ID: ' + idEmergencyContact);
     console.log(this.contactsCollection.get(idEmergencyContact));
     var emergencyContact = this.contactsCollection.get(idEmergencyContact);
-    emergencyContact.set({isEmergencyContact : true});
+    emergencyContact.set({isEmergencyContact: true});
   }
 }
 );
