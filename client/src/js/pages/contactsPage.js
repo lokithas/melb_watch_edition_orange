@@ -12,7 +12,7 @@ var ContactsView = PageView.extend({
   template: require('../../templates/pages/contacts.hbs'),
 
   buttonEvents: {
-    right: 'goToHomePage',
+    right: 'selectContact',
     face: 'screenClickExample',
     left: 'back',
     top: 'scrollUp',
@@ -43,10 +43,6 @@ var ContactsView = PageView.extend({
     this.$el.html('<div>Oh noes!</div>');
   },
 
-  goToHomePage: function() {
-    global.App.navigate('');
-  },
-
   render: function() {
 
     this.$el.html(this.template());
@@ -74,21 +70,27 @@ var ContactsView = PageView.extend({
       return view.render().el;
     },
 
-
     scrollUp: function() {
-    $('#watch-face').animate({scrollTop: '-=30px'});
+    $('#watch-face').animate({scrollTop: '-=36px'});
     $('#contact-'+this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex - 1;
     $('#contact-'+this.selectedIndex).css('background-color', 'green');
   },
 
   scrollDown: function() {
-    $('#watch-face').animate({scrollTop: '+=30px'});
+    $('#watch-face').animate({scrollTop: '+=36px'});
     $('#contact-'+this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex + 1;
     $('#contact-'+this.selectedIndex).css('background-color', 'green');
-  }
+  },
 
+  selectContact: function() {
+    $('#contact-'+this.selectedIndex).css('background-color', 'grey');
+    var idEmergencyContact = $('#contact-'+this.selectedIndex).children()[0].id;
+    console.log("ID: " + idEmergencyContact);
+    console.log(this.contactsCollection.get(idEmergencyContact));
+    this.contactsCollection.get(idEmergencyContact).isEmergencyContact = true;
+  }
 }
 );
 
