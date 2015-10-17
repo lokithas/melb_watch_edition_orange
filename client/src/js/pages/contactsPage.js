@@ -27,7 +27,7 @@ var ContactsView = PageView.extend({
 
     this.selectedIndex = 0;
 
-    self.seedContacts();
+    //self.seedContacts();
   },
 
   // TODO use jquery to load a JSON file async test?
@@ -55,11 +55,8 @@ var ContactsView = PageView.extend({
       $(contactsHTML).append(this.createContactHTML(contact));
     }, this);
 
-    //$(contactsHTML.firstElementChild.firstElementChild).css('background-color', 'green');
-    //$('#contact-'+this.selectedIndex).css('background-color', 'green');
-
     this.$el.append(contactsHTML);
-
+ 
     return this;
   },
 
@@ -70,27 +67,25 @@ var ContactsView = PageView.extend({
       return view.render().el;
     },
 
-  scrollUp: function() {
+    scrollUp: function() {
     $('#watch-face').animate({scrollTop: '-=36px'});
-    $('#contact-' + this.selectedIndex).css('background-color', '');
+    $('#contact-'+this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex - 1;
-    $('#contact-' + this.selectedIndex).css('background-color', 'green');
+    $('#contact-'+this.selectedIndex).css('background-color', 'green');
   },
 
   scrollDown: function() {
     $('#watch-face').animate({scrollTop: '+=36px'});
-    $('#contact-' + this.selectedIndex).css('background-color', '');
+    $('#contact-'+this.selectedIndex).css('background-color', '');
     this.selectedIndex = this.selectedIndex + 1;
-    $('#contact-' + this.selectedIndex).css('background-color', 'green');
+    $('#contact-'+this.selectedIndex).css('background-color', 'green');
   },
 
   selectContact: function() {
-    $('#contact-' + this.selectedIndex).css('color', 'red');
-    var idEmergencyContact = $('#contact-' + this.selectedIndex).children()[0].id;
-    console.log('ID: ' + idEmergencyContact);
-    console.log(this.contactsCollection.get(idEmergencyContact));
+    $('#contact-'+this.selectedIndex).css('color', 'red');
+    var idEmergencyContact = $('#contact-'+this.selectedIndex).children()[0].id;
     var emergencyContact = this.contactsCollection.get(idEmergencyContact);
-    emergencyContact.set({isEmergencyContact: true});
+    emergencyContact.set({isEmergencyContact : true});
   }
 }
 );
