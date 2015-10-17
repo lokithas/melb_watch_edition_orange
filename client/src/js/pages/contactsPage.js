@@ -85,11 +85,13 @@ var ContactsView = PageView.extend({
   },
 
   selectContact: function() {
+    $('#contact-'+this.selectedIndex).css('background-color', 'green');
     $('#contact-'+this.selectedIndex).css('background-color', 'grey');
     var idEmergencyContact = $('#contact-'+this.selectedIndex).children()[0].id;
     console.log("ID: " + idEmergencyContact);
     console.log(this.contactsCollection.get(idEmergencyContact));
-    this.contactsCollection.get(idEmergencyContact).isEmergencyContact = true;
+    var emergencyContact = this.contactsCollection.get(idEmergencyContact);
+    emergencyContact.set({isEmergencyContact : true});
   }
 }
 );
